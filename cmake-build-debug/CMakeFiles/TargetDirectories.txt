@@ -1,3 +1,0 @@
-/Users/user/Work/Technopark/tp-highload-static_server/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/user/Work/Technopark/tp-highload-static_server/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/user/Work/Technopark/tp-highload-static_server/cmake-build-debug/CMakeFiles/tp_highload_static_server.dir
