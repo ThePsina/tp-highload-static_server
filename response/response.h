@@ -1,0 +1,14 @@
+//
+// Created by user on 20.03.2021.
+//
+
+#ifndef TP_HIGHLOAD_STATIC_SERVER_RESPONSE_H
+#define TP_HIGHLOAD_STATIC_SERVER_RESPONSE_H
+
+
+class Response {
+
+};
+
+
+#endif //TP_HIGHLOAD_STATIC_SERVER_RESPONSE_H
