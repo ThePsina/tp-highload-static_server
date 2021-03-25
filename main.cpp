@@ -1,6 +1,7 @@
 #include <iostream>
 #include <tuple>
 #include <zconf.h>
+#include <memory>
 #include "utils/config.h"
 #include "client/Client.h"
 #include "server/server.h"
@@ -8,13 +9,13 @@
 int main() {
     Config config;
     bool status;
-    std::tie(config, status) = Config::read_config();
+    std::tie(config, status) = Config::read_config("/etc/server.conf");
     if (!status) {
         std::cout << "bad config" <<std::endl;
     }
 
     try {
-        Server server(8081, 50, config.doc_root);
+        Server server(8082, 50, config.doc_root);
         for (int i = 1; i < config.cpu; i++) {
             pid_t pid = fork();
             if (pid == fork()) {

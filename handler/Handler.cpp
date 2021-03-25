@@ -5,9 +5,8 @@
 #include "Handler.h"
 #include "../utils/responseMethods.h"
 #include "../utils/mimeType.h"
-#include <fstream>
 #include <iostream>
-#include <sstream>
+#include <filesystem>
 
 std::string url_decode(std::string& file_name) {
     std::string tmp;
@@ -44,7 +43,12 @@ int Handler::Handle(std::string &response, Request &req, std::string &doc_root, 
     }
 
     req.uri = url_decode(req.uri);
-    if (req.uri.rfind('/') == req.uri.size() - 1) {
+    bool lastSlash = req.uri.rfind('/') == req.uri.size() - 1;
+    if (lastSlash) {
+        if (req.uri.rfind('/') > req.uri.rfind('.')) {
+            response = ResponseStatus::NotFound;
+            return 0;
+        }
         req.uri += "index.html";
     }
 

@@ -12,7 +12,7 @@
 #include <iostream>
 #include <sys/mman.h>
 #include <fcntl.h>
-#include <sys/stat.h>
+#include <sys/sendfile.h>
 #include <unistd.h>
 
 Client::Client(int s, std::string doc_root, std::unordered_map<std::string, Mapping> &map) :
@@ -36,8 +36,8 @@ void Client::Serve() {
         }
         if (status == Status::Error) {
             std::string path;
-            int size = Handler::Error(this->response, this->request);
-            write(path, size);
+            Handler::Error(this->response, this->request);
+            write("", 0);
         }
     } catch (const std::exception &e) {
         std::cout << e.what() << std::endl;

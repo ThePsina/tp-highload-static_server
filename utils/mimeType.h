@@ -5,7 +5,9 @@
 #ifndef TP_HIGHLOAD_STATIC_SERVER_MIMETYPE_H
 #define TP_HIGHLOAD_STATIC_SERVER_MIMETYPE_H
 
-std::unordered_map <std::string, std::string> mime_types = {
+#include <unordered_map>
+
+std::unordered_map<std::string, std::string> mime_types = {
         {".txt",  "text/plain"},
         {".html", "text/html"},
         {".css",  "text/css"},

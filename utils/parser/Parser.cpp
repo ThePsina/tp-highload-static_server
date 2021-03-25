@@ -18,4 +18,6 @@ Status Parser::Parse(Request &request, std::string &req) {
         }
         return Status::Error;
     }
+
+    return InProgress;
 }

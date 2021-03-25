@@ -6,6 +6,7 @@
 #define TP_HIGHLOAD_STATIC_SERVER_CONFIG_H
 
 #include <fstream>
+#include <sstream>
 
 struct Config {
     static std::pair<Config, bool> read_config(const std::string& address) {
@@ -24,7 +25,8 @@ struct Config {
         }
         fin.close();
 
-        ss >> line >> config.cpu >> line >> config.doc_root;
+        ss >> config.cpu;
+        ss >> config.doc_root;
 
         return std::make_pair(config, true);
     }
