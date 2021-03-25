@@ -6,6 +6,8 @@
 #include "client/Client.h"
 #include "server/server.h"
 
+// /home/gg/Work/Technopark/ThirdSem/tp-highload-static_server/test
+
 int main() {
     Config config;
     bool status;
@@ -15,9 +17,9 @@ int main() {
     }
 
     try {
-        Server server(8082, 50, config.doc_root);
+        Server server(8082, 5, config.doc_root);
         for (int i = 1; i < config.cpu; i++) {
-            pid_t pid = fork();
+            pid_t pid = 0;
             if (pid == fork()) {
                 break;
             } else if (pid < 0) {
