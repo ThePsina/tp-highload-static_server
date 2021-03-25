@@ -48,7 +48,7 @@ std::string Client::read() const {
     char *buf = new char[BUF_SIZE];
     size_t package_size = 0;
     while (package_size != BUF_SIZE) {
-        ssize_t received = ::recv(socket, buf + r, BUF_SIZE - r, 0);
+        ssize_t received = ::recv(socket, buf + package_size, BUF_SIZE - package_size, 0);
         if (received == -1 || received == 0) {
             delete[] buf;
             throw std::runtime_error("read failed: " + std::string(std::strerror(errno)));
