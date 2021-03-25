@@ -11,7 +11,7 @@
 int main() {
     Config config;
     bool status;
-    std::tie(config, status) = Config::read_config("/etc/server.conf");
+    std::tie(config, status) = Config::read_config("/home/gg/Work/Technopark/ThirdSem/tp-highload-static_server/server.conf");
     if (!status) {
         std::cout << "bad config" <<std::endl;
     }

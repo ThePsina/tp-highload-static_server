@@ -1,7 +1,3 @@
-//
-// Created by user on 20.03.2021.
-//
-
 #ifndef TP_HIGHLOAD_STATIC_SERVER_SERVER_H
 #define TP_HIGHLOAD_STATIC_SERVER_SERVER_H
 
@@ -18,7 +14,6 @@ public:
 private:
     int socket;
     std::string doc_root_;
-    std::unordered_map<std::string, Mapping> map;
 };
 
 

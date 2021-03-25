@@ -1,7 +1,3 @@
-//
-// Created by user on 20.03.2021.
-//
-
 #include <stdexcept>
 #include <cstring>
 #include <sys/socket.h>
@@ -21,7 +17,7 @@ Server::Server(int port, int limit, std::string doc_root) {
     int yes = 1;
     if (setsockopt(sd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)) == -1) {
         ::close(sd);
-        throw std::runtime_error("setopt: " + std::string(strerror(errno)));
+        throw std::runtime_error("set sock opt: " + std::string(strerror(errno)));
     }
 
     struct sockaddr_in serv_addr{};
@@ -42,15 +38,14 @@ Server::Server(int port, int limit, std::string doc_root) {
 
 std::shared_ptr<Client> Server::Accept() {
     struct sockaddr_in client{};
-    memset(&client, 0, sizeof(client));
-    socklen_t cli_len = sizeof(client);
 
+    socklen_t cli_len = sizeof(client);
     int cli_sd = ::accept(socket, (struct sockaddr*)&client, &cli_len);
-    if (-1 == cli_sd) {
+    if (cli_sd == -1) {
         return std::shared_ptr<Client>();
     }
 
-    return std::make_shared<Client>(cli_sd, doc_root_, map);
+    return std::make_shared<Client>(cli_sd, doc_root_);
 }
 
 Server::~Server() {

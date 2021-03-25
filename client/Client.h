@@ -1,19 +1,14 @@
-//
-// Created by user on 21.03.2021.
-//
-
 #ifndef TP_HIGHLOAD_STATIC_SERVER_CLIENT_H
 #define TP_HIGHLOAD_STATIC_SERVER_CLIENT_H
 
 
 #include <string>
 #include <unordered_map>
-#include "../utils/mapping.h"
 #include "../request/request.h"
 
 class Client {
 public:
-    Client(int s, std::string doc_root, std::unordered_map<std::string, Mapping>& map);
+    Client(int s, std::string doc_root);
     ~Client();
     void Serve();
 
@@ -26,8 +21,6 @@ private:
     std::string doc_root_;
     Request request;
     std::string response;
-
-    std::unordered_map<std::string, Mapping>& map_;
 };
 
 

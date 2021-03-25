@@ -1,7 +1,3 @@
-//
-// Created by user on 21.03.2021.
-//
-
 #ifndef TP_HIGHLOAD_STATIC_SERVER_PARSER_H
 #define TP_HIGHLOAD_STATIC_SERVER_PARSER_H
 

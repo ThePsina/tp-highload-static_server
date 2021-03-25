@@ -1,25 +1,21 @@
-//
-// Created by user on 21.03.2021.
-//
-
 #include "Handler.h"
 #include "../utils/responseMethods.h"
 #include "../utils/mimeType.h"
 #include <iostream>
 #include <filesystem>
 
-std::string url_decode(std::string& file_name) {
+std::string url_decode(std::string& filename) {
     std::string tmp;
     int j = 0;
     char ch;
-    for (int i = 0; i < file_name.size(); ++i) {
-        if (int(file_name[i]) == 37) {
-            sscanf(file_name.substr(i + 1, 2).c_str(), "%x", &j);
+    for (int i = 0; i < filename.size(); ++i) {
+        if (int(filename[i]) == 37) {
+            sscanf(filename.substr(i + 1, 2).c_str(), "%x", &j);
             ch = static_cast<char>(j);
             tmp += ch;
             i += 2;
         } else {
-            tmp += file_name[i];
+            tmp += filename[i];
         }
     }
 
@@ -81,8 +77,8 @@ int Handler::Handle(std::string &response, Request &req, std::string &doc_root, 
     resp << "HTTP/1.1 200 OK\r\n"
          << "Content-Type: " << mime_type << "\r\n"
          << "Server: server on c++\r\n"
-         << "Content-Length: " << size
-         << "\r\nConnection: close"
+         << "Content-Length: " << size << "\r\n"
+         << "Connection: close"
          << "\r\n\r\n";
     response = std::move(resp.str());
 
