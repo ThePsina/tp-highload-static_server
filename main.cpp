@@ -24,6 +24,7 @@ int main() {
                 break;
             } else if (pid < 0) {
                 std::cout << "bad fork " << std::endl;
+                return -2;
             }
         }
 
