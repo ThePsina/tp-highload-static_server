@@ -10,9 +10,9 @@
 
 int main() {
     Config config;
-    bool status;
-    std::tie(config, status) = Config::read_config("/etc/server.conf");
-    if (!status) {
+    bool ok;
+    std::tie(config, ok) = Config::read_config("/etc/server.conf");
+    if (!ok) {
         std::cout << "bad config" <<std::endl;
     }
 
